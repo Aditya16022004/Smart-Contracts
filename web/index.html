@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriX - PvP Staking System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TriX</h1>
+            <p>PvP Staking System</p>
+            <div class="wallet-info" id="walletInfo">
+                <button id="connectWallet" class="btn btn-primary">Connect Wallet</button>
+                <div id="walletDetails" class="wallet-details" style="display: none;">
+                    <span id="walletAddress"></span>
+                    <span id="networkInfo"></span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Balance Section -->
+            <section class="balance-section">
+                <h2>Your Balances</h2>
+                <div class="balance-grid">
+                    <div class="balance-card">
+                        <h3>GT Balance</h3>
+                        <p id="gtBalance">0.0 GT</p>
+                    </div>
+                    <div class="balance-card">
+                        <h3>USDT Balance</h3>
+                        <p id="usdtBalance">0.0 USDT</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Purchase Section -->
+            <section class="purchase-section">
+                <h2>Buy GT with USDT</h2>
+                <div class="form-group">
+                    <label for="usdtAmount">USDT Amount:</label>
+                    <input type="number" id="usdtAmount" placeholder="Enter USDT amount" step="0.01" min="0">
+                    <button id="estimateBtn" class="btn btn-secondary">Estimate GT</button>
+                </div>
+                <div id="estimateResult" class="estimate-result" style="display: none;">
+                    <p>You will receive: <span id="estimatedGT">0</span> GT</p>
+                    <p>Rate: <span id="conversionRate">1</span> GT per 1 USDT</p>
+                </div>
+                <div class="form-group">
+                    <button id="approveBtn" class="btn btn-secondary" disabled>1. Approve USDT</button>
+                    <button id="buyBtn" class="btn btn-primary" disabled>2. Buy GT</button>
+                </div>
+                <div id="purchaseStatus" class="status-message"></div>
+            </section>
+
+            <!-- Match Section -->
+            <section class="match-section">
+                <h2>Create & Stake Match</h2>
+                <div class="form-group">
+                    <label for="matchId">Match ID:</label>
+                    <input type="text" id="matchId" placeholder="Enter match ID or leave empty for auto-generate">
+                </div>
+                <div class="form-group">
+                    <label for="p2Address">Opponent Address:</label>
+                    <input type="text" id="p2Address" placeholder="Enter opponent's wallet address">
+                </div>
+                <div class="form-group">
+                    <label for="stakeAmount">Stake Amount (GT):</label>
+                    <input type="number" id="stakeAmount" placeholder="Enter stake amount" step="0.01" min="0">
+                </div>
+                <div class="form-group">
+                    <button id="createMatchBtn" class="btn btn-secondary">Create Match</button>
+                    <button id="stakeBtn" class="btn btn-primary" disabled>Stake GT</button>
+                </div>
+                <div id="matchStatus" class="status-message"></div>
+            </section>
+
+            <!-- Result Section -->
+            <section class="result-section">
+                <h2>Submit Match Result (Operator Only)</h2>
+                <div class="form-group">
+                    <label for="resultMatchId">Match ID:</label>
+                    <input type="text" id="resultMatchId" placeholder="Enter match ID">
+                </div>
+                <div class="form-group">
+                    <label for="winnerAddress">Winner Address:</label>
+                    <input type="text" id="winnerAddress" placeholder="Enter winner's address">
+                </div>
+                <div class="form-group">
+                    <button id="submitResultBtn" class="btn btn-warning">Submit Result</button>
+                </div>
+                <div id="resultStatus" class="status-message"></div>
+            </section>
+
+            <!-- Event Logs -->
+            <section class="events-section">
+                <h2>Recent Events</h2>
+                <div id="eventLogs" class="event-logs">
+                    <p class="no-events">No events yet. Connect your wallet and start playing!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <p id="loadingMessage">Processing transaction...</p>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Error</h3>
+            <p id="errorMessage"></p>
+            <button class="btn btn-primary" onclick="closeErrorModal()">OK</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

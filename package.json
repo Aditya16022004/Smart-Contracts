@@ -1,0 +1,75 @@
+{
+  "name": "trix-pvp-staking",
+  "version": "1.0.0",
+  "description": "TriX - PvP Staking System with Smart Contracts, Backend API, and Frontend",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "node": "hardhat node",
+    "deploy": "hardhat run deploy/00_deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run deploy/00_deploy.js --network sepolia",
+    "deploy:goerli": "hardhat run deploy/00_deploy.js --network goerli",
+    "verify:sepolia": "hardhat verify --network sepolia",
+    "verify:goerli": "hardhat verify --network goerli",
+    "start:api": "cd api && npm start",
+    "start:leaderboard": "node tools/leaderboard.js",
+    "serve:web": "cd web && python3 -m http.server 3000 || python -m http.server 3000 || npx serve .",
+    "dev:api": "cd api && npm run dev",
+    "install:api": "cd api && npm install",
+    "install:all": "npm install && npm run install:api",
+    "clean": "hardhat clean",
+    "size": "hardhat size-contracts",
+    "gas": "REPORT_GAS=true hardhat test",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "smart-contracts",
+    "pvp",
+    "staking",
+    "defi",
+    "hardhat",
+    "solidity"
+  ],
+  "author": "TriX Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.2",
+    "@nomicfoundation/hardhat-ethers": "^3.0.4",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@typechain/ethers-v6": "^0.4.3",
+    "@typechain/hardhat": "^8.0.3",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "ethers": "^6.8.1",
+    "hardhat": "^2.19.1",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solhint": "^4.0.0",
+    "solidity-coverage": "^0.8.5",
+    "typechain": "^8.3.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "better-sqlite3": "^12.2.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/trix-pvp-staking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/trix-pvp-staking/issues"
+  },
+  "homepage": "https://github.com/your-username/trix-pvp-staking#readme"
+}
